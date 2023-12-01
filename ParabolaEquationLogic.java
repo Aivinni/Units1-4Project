@@ -8,6 +8,7 @@ public class ParabolaEquationLogic {
     private int b;
     private int c;
     private ParabolaEquation equation;
+    private LinearEquation secretEquation;
 
     //constructor
     public ParabolaEquationLogic() {
@@ -28,17 +29,38 @@ public class ParabolaEquationLogic {
         System.out.println("Enter thine equation:");
         // Equation in form ax^2 + bx + c
         equationString = scan.nextLine();
-        a = Integer.parseInt(equationString.substring(0, equationString.indexOf("x^2 "))); 
-        b = Integer.parseInt(equationString.substring(equationString.indexOf("x^2 + ") + 6, equationString.indexOf("x + ")));
+        if (equationString.indexOf("x^2 ") == -1) {
+            a = 0;
+        } else if (equationString.substring(0, equationString.indexOf("x^2 ")).equals("")) {
+            a = 1;
+        } else {
+            a = Integer.parseInt(equationString.substring(0, equationString.indexOf("x^2 "))); 
+        }
+        if (equationString.indexOf("x^2 + ") == -1) {
+            if (equationString.indexOf("x^2 - ") == -1) {
+
+            } else {
+                b = Integer.parseInt(equationString.substring(equationString.indexOf("x^2 - ") + 6, equationString.indexOf("x + ")));
+            }
+        } else {
+            if (equationString.indexOf("x + ") == -1) {
+                
+            }
+            b = Integer.parseInt(equationString.substring(equationString.indexOf("x^2 + ") + 6, equationString.indexOf("x + ")));
+        }
+        
         c = Integer.parseInt(equationString.substring(equationString.indexOf("x + ") + 4));
         equation = new ParabolaEquation(a, b, c);
     }
     private void printInfo() {
-        System.out.println("x-intercepts: ");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
+        if (equation.realRoots()) {
+            System.out.println("x-intercepts: " + equation.xIntercept1() + ", " + equation.xIntercept2());
+            System.out.println("coordinates of x-intercepts:");
+            System.out.println("y-intercepts: " + equation.yIntercept());
+            System.out.println();
+            System.out.println();
+        } else {
+            System.out.println("x-intercepts: " + equation.nonRealXIntercept2() + " " + equation.nonRealXIntercept2());
+        }
     }
 }

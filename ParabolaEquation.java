@@ -48,4 +48,10 @@ public class ParabolaEquation {
     public double xIntercept2() {
         return ((-1 * b) + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
     }
+    public double NonRealXIntercept1() {
+        return ((-1 * b) - Math.sqrt(Math.abs(Math.pow(b, 2) - (4 * a * c)))) / (2 * a);
+    }
+    public double nonRealXIntercept2() {
+        return ((-1 * b) + Math.sqrt(Math.abs(Math.pow(b, 2) - (4 * a * c)))) / (2 * a);
+    }
 }
