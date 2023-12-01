@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        ParabolaEquationLogic equation1 = new ParabolaEquationLogic();
+        EquationLogic equation1 = new EquationLogic();
         equation1.start();
     }
 }

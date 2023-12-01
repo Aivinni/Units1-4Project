@@ -1,4 +1,5 @@
 public class LinearEquation {
+    private String equation;
     private final int X1;
     private final int Y1;
     private final int X2;
@@ -11,17 +12,23 @@ public class LinearEquation {
     private int slope;
 
     // PRECONDITION: X2 != X1
-    public LinearEquation(int X1, int Y1, int X2, int Y2) {
-        this.X1 = X1;
-        this.Y1 = Y1;
-        this.X2 = X2;
-        this.Y2 = Y2;
+    public LinearEquation(String equation) {
+        this.equation = equation;
+        /*
         yInterceptDouble = yIntercept();
         slope = (int) slope();
         yIntercept = (int) yInterceptDouble;
         yInterceptDoublePrint = yInterceptDouble;
         yInterceptPrint = yIntercept;
+        */
     }
+
+    public String getSlope() {
+        if (equation.substring(0, equation.indexOf("x").contains("/"))) {
+            
+        }
+    }
+    /*
 
     private boolean isInt(double num) {
         return num - (int)num == 0;
@@ -31,11 +38,6 @@ public class LinearEquation {
         toRound = (int)toRound;
         toRound /= 100.0;
         return toRound;
-    }
-    public double distance() {
-        double distX = Math.abs(X2 - X1);
-        double distY = Math.abs(Y2 - Y1);
-        return roundedToHundredth(Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2)));
     }
     public double slope() {
         double run = X2 - X1;
@@ -171,4 +173,5 @@ public class LinearEquation {
             }
         }
     }
+    */
 }
