@@ -32,26 +32,57 @@ public class ParabolaEquation {
     }
     
     // other public methods
-    public boolean realRoots() {
+    public int yIntercept() {
+        return c;
+    }
+    public int coordinateForX(int x) {
+        return a * (int) Math.pow(x, 2) + b * x + c;
+    }
+    public String graphInfo() {
+        if (Util.isInt(xIntercept1()) && Util.isInt(xIntercept2())) {
+            if (realRoots()) {
+                return "\nx-intercepts: " + (int) xIntercept1() + ", " + (int) xIntercept2() + 
+                "\ncoordinates of x-intercepts: \n(" + (int) xIntercept1() + ", 0) \n(" + (int) xIntercept2() + ", 0)" + 
+                "\ny-intercepts: " + yIntercept() + 
+                "\ncoordinates of y-intercepts: \n(0, " + yIntercept() + ")";
+            } else {
+                return "\nx-intercepts: " + (int) nonRealXIntercept1() + "i, " + (int) nonRealXIntercept2() + "i" +
+                "\ncoordinates of x-intercepts: \n(" + (int) nonRealXIntercept1() + "i, 0) \n(" + (int) nonRealXIntercept2() + "i, 0)" + 
+                "\ny-intercepts: " + yIntercept() + 
+                "\ncoordinates of y-intercepts: \n(0, " + yIntercept() + ")";
+            }
+        }
+        if (realRoots()) {
+            return "\nx-intercepts: " + Util.roundedToHundredth(xIntercept1()) + ", " + Util.roundedToHundredth(xIntercept2()) + 
+            "\ncoordinates of x-intercepts: \n(" + xIntercept1() + ", 0) \n(" + xIntercept2() + ", 0)" + 
+            "\ny-intercepts: " + yIntercept() + 
+            "\ncoordinates of y-intercepts: \n(0, " + yIntercept() + ")";
+        } else {
+            return "\nx-intercepts: " + Util.roundedToHundredth(nonRealXIntercept1()) + "i, " + Util.roundedToHundredth(nonRealXIntercept2()) + "i"+ 
+            "\ncoordinates of x-intercepts: \n(" + nonRealXIntercept1() + ", 0) \n(" + nonRealXIntercept2() + ", 0)" + 
+            "\ny-intercepts: " + yIntercept() + 
+            "\ncoordinates of y-intercepts: \n(0, " + yIntercept() + ")";
+        }
+    }
+
+    // private helper methods
+    private boolean realRoots() {
         if (Math.pow(b, 2) - (4 * a * c) >= 0) {
             return true;
         } else {
             return false;
         }
     }
-    public int yIntercept() {
-        return c;
-    }
-    public double xIntercept1() {
+    private double xIntercept1() {
         return ((-1 * b) - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
     }
-    public double xIntercept2() {
+    private double xIntercept2() {
         return ((-1 * b) + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
     }
-    public double NonRealXIntercept1() {
+    private double nonRealXIntercept1() {
         return ((-1 * b) - Math.sqrt(Math.abs(Math.pow(b, 2) - (4 * a * c)))) / (2 * a);
     }
-    public double nonRealXIntercept2() {
+    private double nonRealXIntercept2() {
         return ((-1 * b) + Math.sqrt(Math.abs(Math.pow(b, 2) - (4 * a * c)))) / (2 * a);
     }
 }

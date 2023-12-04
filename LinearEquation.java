@@ -1,177 +1,50 @@
 public class LinearEquation {
     private String equation;
-    private final int X1;
-    private final int Y1;
-    private final int X2;
-    private final int Y2;
-    private String sign = "+ ";
-    private double yInterceptDouble;
-    private double yInterceptDoublePrint;
-    private int yIntercept;
-    private int yInterceptPrint;
-    private int slope;
-
+    private int b;
+    private int c;
+    
     // PRECONDITION: X2 != X1
-    public LinearEquation(String equation) {
+    public LinearEquation(String equation, int b, int c) {
         this.equation = equation;
-        /*
-        yInterceptDouble = yIntercept();
-        slope = (int) slope();
-        yIntercept = (int) yInterceptDouble;
-        yInterceptDoublePrint = yInterceptDouble;
-        yInterceptPrint = yIntercept;
-        */
+        this.b = b;
+        this.c = c;
+
     }
 
-    public String getSlope() {
-        if (equation.substring(0, equation.indexOf("x").contains("/"))) {
-            
-        }
-    }
-    /*
-
-    private boolean isInt(double num) {
-        return num - (int)num == 0;
-    }
-    private double roundedToHundredth(double toRound) {
-        toRound *= 100;
-        toRound = (int)toRound;
-        toRound /= 100.0;
-        return toRound;
-    }
-    public double slope() {
-        double run = X2 - X1;
-        double rise = Y2 - Y1;
-        if (!(run == 0)) {
-            return roundedToHundredth(rise / run);
-        } else {
-            return 0;
-        }
-    }
-    public String slopeFraction() {
-        int i;
-        int higher;
-        int run = X2 - X1;
-        int rise = Y2 - Y1;
-        higher = Math.max(run, rise);
-        for (i = 1; i < higher; i++) {
-            if (run % i == 0 && rise % i == 0) {
-                run = run / i;
-                rise = rise / i;
-            }
-        }
-        return rise + "/" + run;
-    }
-    public boolean errorCheck() {
-        double run = X2 - X1;
-        double rise = Y2 - Y1;
-        return run == 0 && rise != 0;
-    }
-    public double yIntercept() {
-        return Y1 - (X1 * slope());
+    public void setEquation(String equation) {
+        this.equation = equation;
     }
     public String equation() {
-        if (errorCheck()) {
-            return "x = " + X1;
-        }
-        if (yInterceptDouble < 0) {
-            sign = "- ";
-            yIntercept *= -1;
-            yInterceptDouble *= -1;
-        }
-        if (slope() == 0 && yIntercept() == 0) {
-            return "y = 0";
-        } else if (slope() == 1 && yIntercept() == 0) {
-            return "y = x";
-        }
-        if (isInt(slope())){
-            if (isInt(yIntercept())) {
-                if (slope() == 0) {
-                    return "y = " + yIntercept;
-                } else if (slope() == 1) {
-                    return "y = x " + sign + yIntercept;
-                } else if (yIntercept() == 0) {
-                    return "y = " + slope + "x";
-                }
-                return "y = " + slope + "x " + sign + yIntercept;
-            } else {
-                if (slope() == 0) {
-                    return "y = " + yInterceptDouble;
-                } else if (slope() == 1) {
-                    return "y = x " + sign + yInterceptDouble;
-                } else if (yIntercept() == 0) {
-                    return "y = " + slope + "x";
-                }
-                return "y = " + slope + "x " + sign + yInterceptDouble;
-            }
-        } else {
-            if (isInt(yIntercept())) {
-                if (slope() == 0) {
-                    return "y = " + yIntercept;
-                } else if (slope() == 1) {
-                    return "y = x " + sign + yIntercept;
-                } else if (yIntercept() == 0) {
-                    return "y = " + slopeFraction() + "x";
-                }
-                return "y = " + slopeFraction() + "x " + sign + yIntercept;
-            } else {
-                if (slope() == 0) {
-                    return "y = " + yInterceptDouble;
-                } else if (slope() == 1) {
-                    return "y = x " + sign + yInterceptDouble;
-                } else if (yIntercept() == 0) {
-                    return "y = " + slopeFraction() + "x";
-                }
-                return "y = " + slopeFraction() + "x " + sign + yInterceptDouble;
-            }
-        }
-
+        return equation;
     }
-    public String coordinateForX(double x) {
-        if (isInt(x)) {
-            if (isInt((slope() * x) + yIntercept())) {
-                return "(" + (int)x + ", " + (int)((slope() * x) + yIntercept()) + ")";
-            } else {
-                return "(" + (int)x + ", " + ((slope() * x) + yIntercept()) + ")";
-            }
-        } else {
-            if (isInt((slope() * x) + yIntercept())) {
-                return "(" + x + ", " + (int)((slope() * x) + yIntercept()) + ")";
-            } else {
-                return "(" + x + ", " + ((slope() * x) + yIntercept()) + ")";
-            }
-        }
+    public void setSlope(int b) {
+        this.b = b;
     }
-    public String lineInfo() {
-        if (isInt(slope())) {
-            if (isInt(yIntercept())) {
-                return "The two points are: " + "(" + X1 + ", " + Y1 + ")" + " and " + "(" + X2 + ", " + Y2 + ")" + " \n" +
-                        "The equation of the line between these points is: " + equation() + " \n" +
-                        "The slope of this line is: " + slope + " \n" +
-                        "The y-intercept of this line is: " + yInterceptPrint + " \n" +
-                        "The distance between these points is " + distance();
-            } else {
-                return "The two points are: " + "(" + X1 + ", " + Y1 + ")" + " and " + "(" + X2 + ", " + Y2 + ")" + " \n" +
-                        "The equation of the line between these points is: " + equation() + " \n" +
-                        "The slope of this line is: " + slope + " \n" +
-                        "The y-intercept of this line is: " + yInterceptDoublePrint + " \n" +
-                        "The distance between these points is " + distance();
-            }
-        } else {
-            if (isInt(yIntercept())) {
-                return "The two points are: " + "(" + X1 + ", " + Y1 + ")" + " and " + "(" + X2 + ", " + Y2 + ")" + " \n" +
-                        "The equation of the line between these points is: " + equation() + " \n" +
-                        "The slope of this line is: " + slopeFraction() + " \n" +
-                        "The y-intercept of this line is: " + yInterceptPrint + " \n" +
-                        "The distance between these points is " + distance();
-            } else {
-                return "The two points are: " + "(" + X1 + ", " + Y1 + ")" + " and " + "(" + X2 + ", " + Y2 + ")" + " \n" +
-                        "The equation of the line between these points is: " + equation() + " \n" +
-                        "The slope of this line is: " + slopeFraction() + " \n" +
-                        "The y-intercept of this line is: " + yInterceptDoublePrint + " \n" +
-                        "The distance between these points is " + distance();
-            }
-        }
+    public int getSlope() {
+        return b;
     }
-    */
+    public void setYIntercept(int c) {
+        this.c = c;
+    }
+    public int getYIntercept() {
+        return c;
+    }
+    public double xIntercept() {
+        return (double) (-c) / b;
+    }
+    public int coordinateForX(double x) {
+        return (int) (getSlope() * x) + getYIntercept();
+    }
+    public String graphInfo() {
+        if (Util.isInt(xIntercept())){
+            return "\nequation of line: " + equation + 
+        "\nslope of line: " + getSlope() + 
+        "\ny-intercept of line: " + getYIntercept() + 
+        "\nx-intercept: " + (int) xIntercept();
+        }
+        return "\nequation of line: " + equation + 
+        "\nslope of line: " + getSlope() + 
+        "\ny-intercept of line: " + getYIntercept() + 
+        "\nx-intercept: " + xIntercept();
+    }
 }
