@@ -14,18 +14,18 @@ public class LinearEquation {
     public void setEquation(String equation) {
         this.equation = equation;
     }
-    public String equation() {
-        return equation;
-    }
-    public void setSlope(int b) {
-        this.b = b;
-    }
+    // public String equation() {
+    //     return equation;
+    // }
+    // public void setSlope(int b) {
+    //     this.b = b;
+    // }
     public int getSlope() {
         return b;
     }
-    public void setYIntercept(int c) {
-        this.c = c;
-    }
+    // public void setYIntercept(int c) {
+    //     this.c = c;
+    // }
     public int getYIntercept() {
         return c;
     }

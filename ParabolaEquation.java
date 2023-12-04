@@ -12,24 +12,24 @@ public class ParabolaEquation {
     }
 
     // public getter and setter methods
-    public void setA(int newA) {
-        a = newA;
-    }
-    public int getA() {
-        return a;
-    }
-    public void setB(int newB) {
-        b = newB;
-    }
-    public int getB() {
-        return b;
-    }
-    public void setC(int newC) {
-        c = newC;
-    }
-    public int getC() {
-        return c;
-    }
+    // public void setA(int newA) {
+    //     a = newA;
+    // }
+    // public int getA() {
+    //     return a;
+    // }
+    // public void setB(int newB) {
+    //     b = newB;
+    // }
+    // public int getB() {
+    //     return b;
+    // }
+    // public void setC(int newC) {
+    //     c = newC;
+    // }
+    // public int getC() {
+    //     return c;
+    // }
     
     // other public methods
     public int yIntercept() {
