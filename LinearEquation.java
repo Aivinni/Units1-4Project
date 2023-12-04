@@ -11,9 +11,9 @@ public class LinearEquation {
 
     }
 
-    public void setEquation(String equation) {
-        this.equation = equation;
-    }
+    // public void setEquation(String equation) {
+    //     this.equation = equation;
+    //}
     // public String equation() {
     //     return equation;
     // }
